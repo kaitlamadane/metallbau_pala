@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ======================== SEO META TAGS ======================== -->
+    <title>Metallbau Pala | Industriebau · Treppen · Möbelbau · Serienfertigung</title>
+    <meta name="description"
+        content="Metallbau Pala – Ihr Partner für Industriebau, Treppen, Möbelbau und Serienfertigung. Qualität und Präzision aus Leidenschaft.">
+
+    <!-- ======================== GOOGLE FONTS ======================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- ======================== STYLESHEET ======================== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ================================================================
+         NAVIGATION / HEADER
+         - Feste Navigationsleiste am oberen Rand
+         - Logo-Platzhalter links, Menüpunkte rechts
+         - Hamburger-Button für mobile Ansicht
+    ================================================================= -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <!-- === LOGO: === -->
+            <a href="#" class="nav__logo">
+                <img src="images/logo_web.png" alt="Metallbau Pala Logo" class="nav__logo-img">
+            </a>
+
+            <!-- Hamburger-Button für mobile Ansicht -->
+            <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <!-- Menüpunkte -->
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#leistungen" class="nav__link">Leistungen</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#unternehmen" class="nav__link">Unternehmen</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#kontakt" class="nav__link">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================================================================
+         HERO SECTION
+         - Großes Hintergrundbild mit Überlagerung
+         - Hauptüberschrift und Call-to-Action
+    ================================================================= -->
+    <section class="hero" id="hero">
+        <!-- === HERO-HINTERGRUNDBILD: Ersetze die URL in styles.css (.hero) durch dein eigenes Bild === -->
+        <div class="hero__overlay"></div>
+        <div class="hero__content container">
+            <!-- === HERO TEXT: Passe Überschrift und Beschreibung an === -->
+            <h1 class="hero__title">Metallbau<br><span class="accent">Pala</span></h1>
+            <p class="hero__subtitle">Ihr Partner für hochwertigen Metallbau – von Industriebau bis Möbelbau.</p>
+            <a href="#leistungen" class="btn btn--primary">Unsere Leistungen entdecken</a>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         ABSCHNITT: UNSERE LEISTUNGEN (Portfolio / Galerie)
+         - Überschrift mit Beschreibung
+         - Filter-Navigation (ALL, INDUSTRIEBAU, TREPPEN, etc.)
+         - Responsives CSS-Grid mit Hover-Overlay-Effekt
+    ================================================================= -->
+    <section class="section leistungen" id="leistungen">
+        <div class="container">
+            <!-- Überschrift & Beschreibung -->
+            <div class="section__header">
+                <h2 class="section__title">UNSERE LEISTUNGEN</h2>
+                <!-- === BESCHREIBUNGSTEXT: Passe diesen Text an dein Unternehmen an === -->
+                <p class="section__description">
+                    Von der ersten Idee bis zum fertigen Produkt – wir realisieren Ihre Projekte mit höchster Präzision
+                    und Leidenschaft für Metall.
+                </p>
+            </div>
+
+            <!-- Filter-Navigation -->
+            <div class="filter" id="filter">
+                <button class="filter__btn filter__btn--active" data-filter="all">ALL</button>
+                <button class="filter__btn" data-filter="industriebau">INDUSTRIEBAU</button>
+                <button class="filter__btn" data-filter="treppen">TREPPEN</button>
+                <button class="filter__btn" data-filter="moebelbau">MÖBELBAU</button>
+                <button class="filter__btn" data-filter="serienfertigung">SERIENFERTIGUNG</button>
+            </div>
+
+            <!-- ============================================================
+                 PROJEKT-GRID
+                 Jede .project-card hat:
+                   - data-category="..." → für den Filter (industriebau, treppen, moebelbau, serienfertigung)
+                   - Ein Platzhalter-Bild (ersetze die src-URL durch dein eigenes Bild)
+                   - .project-card__overlay mit Titel und Untertitel
+                 
+                 UM EIN NEUES PROJEKT HINZUZUFÜGEN:
+                 Kopiere einfach einen der Blöcke unten und ändere:
+                   1. data-category auf die passende Kategorie
+                   2. Die Bild-URL
+                   3. Den Titel und Untertitel im Overlay
+            ============================================================ -->
+            <div class="projects-grid" id="projects-grid">
+
+                <!-- === PROJEKT 1: Hallenbau === -->
+                <div class="project-card" data-category="industriebau">
+                    <!-- BILD: Ersetze die URL durch dein eigenes Bild -->
+                    <img src="https://via.placeholder.com/600x450/2a2d35/ffffff?text=Hallenbau" alt="Hallenbau Projekt"
+                        class="project-card__img">
+                    <div class="project-card__overlay">
+                        <!-- TITEL & UNTERTITEL: Passe den Text an -->
+                        <h3 class="project-card__title">HALLENBAU</h3>
+                        <p class="project-card__subtitle">Stahlhallen nach Maß</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 2: Stahlkonstruktion === -->
+                <div class="project-card" data-category="industriebau">
+                    <img src="https://via.placeholder.com/600x450/3a3d45/ffffff?text=Stahlkonstruktion"
+                        alt="Stahlkonstruktion Projekt" class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">STAHLKONSTRUKTION</h3>
+                        <p class="project-card__subtitle">Tragwerke & Fassaden</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 3: Wendeltreppe === -->
+                <div class="project-card" data-category="treppen">
+                    <img src="https://via.placeholder.com/600x450/4a4d55/ffffff?text=Wendeltreppe"
+                        alt="Wendeltreppe Projekt" class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">WENDELTREPPE</h3>
+                        <p class="project-card__subtitle">Design trifft Funktion</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 4: Geländer === -->
+                <div class="project-card" data-category="treppen">
+                    <img src="https://via.placeholder.com/600x450/5a5d65/ffffff?text=Gelaender" alt="Geländer Projekt"
+                        class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">GELÄNDER</h3>
+                        <p class="project-card__subtitle">Edelstahl & Glas</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 5: Stahltisch === -->
+                <div class="project-card" data-category="moebelbau">
+                    <img src="https://via.placeholder.com/600x450/6a6d75/ffffff?text=Stahltisch"
+                        alt="Stahltisch Projekt" class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">STAHLTISCH</h3>
+                        <p class="project-card__subtitle">Eiche trifft Stahl</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 6: Regal === -->
+                <div class="project-card" data-category="moebelbau">
+                    <img src="https://via.placeholder.com/600x450/7a7d85/ffffff?text=Regal" alt="Regal Projekt"
+                        class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">REGAL</h3>
+                        <p class="project-card__subtitle">Individuelles Design</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 7: Serienteile === -->
+                <div class="project-card" data-category="serienfertigung">
+                    <img src="https://via.placeholder.com/600x450/8a8d95/ffffff?text=Serienteile"
+                        alt="Serienteile Projekt" class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">SERIENTEILE</h3>
+                        <p class="project-card__subtitle">CNC-Fertigung</p>
+                    </div>
+                </div>
+
+                <!-- === PROJEKT 8: Laserzuschnitt === -->
+                <div class="project-card" data-category="serienfertigung">
+                    <img src="https://via.placeholder.com/600x450/9a9da5/ffffff?text=Laserzuschnitt"
+                        alt="Laserzuschnitt Projekt" class="project-card__img">
+                    <div class="project-card__overlay">
+                        <h3 class="project-card__title">LASERZUSCHNITT</h3>
+                        <p class="project-card__subtitle">Präzise & schnell</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         ABSCHNITT: UNTERNEHMEN
+         - Text links, Bild rechts
+         - Platzhalter für eigene Inhalte
+    ================================================================= -->
+    <section class="section unternehmen" id="unternehmen">
+        <div class="container">
+            <div class="unternehmen__grid">
+
+                <!-- Linke Seite: Text -->
+                <div class="unternehmen__text">
+                    <h2 class="section__title section__title--left">UNSER UNTERNEHMEN</h2>
+
+                    <!-- === UNTERNEHMENSTEXT: Ersetze diesen Platzhaltertext durch deine eigene Beschreibung === -->
+                    <p class="unternehmen__description">
+                        Seit über 20 Jahren steht Metallbau Pala für Qualität, Zuverlässigkeit und Innovation im
+                        Metallbau.
+                        Von unserem Standort aus realisieren wir Projekte jeder Größe – vom individuellen Möbelstück
+                        bis zur kompletten Industriehalle.
+                    </p>
+                    <p class="unternehmen__description">
+                        Unser erfahrenes Team verbindet traditionelles Handwerk mit modernster Technik.
+                        Mit CNC-gesteuerten Maschinen, Laserschneidanlagen und einem
+                        leidenschaftlichen Team garantieren wir höchste Präzision bei jedem Projekt.
+                    </p>
+                    <!-- === ENDE UNTERNEHMENSTEXT === -->
+
+                    <!-- Kennzahlen / Key Facts -->
+                    <div class="unternehmen__stats">
+                        <div class="stat">
+                            <!-- === KENNZAHL: Passe die Zahl und den Text an === -->
+                            <span class="stat__number">30+</span>
+                            <span class="stat__label">Jahre Erfahrung</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">100</span>
+                            <span class="stat__label">Verarbeitete Tonnen Stahl pro Jahr</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">10</span>
+                            <span class="stat__label">Mitarbeiter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rechte Seite: Bild -->
+                <div class="unternehmen__image">
+                    <!-- === UNTERNEHMENSBILD: Ersetze die URL durch dein eigenes Bild === -->
+                    <img src="images/logo_web.png" alt="Metallbau Pala Werkstatt" class="unternehmen__img">
+                    <!-- === ENDE UNTERNEHMENSBILD === -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         ABSCHNITT: KONTAKT
+         - Obere Sektion: Kontakt-Infos (links) & Telefon + Öffnungszeiten (rechts)
+         - Untere Sektion: Kontaktformular (Web3Forms)
+    ================================================================= -->
+    <section class="section kontakt" id="kontakt">
+        <div class="container">
+
+            <!-- ── Obere Sektion: Info-Spalten ── -->
+            <div class="kontakt__info-grid">
+
+                <!-- Linke Spalte: Kontakt-Info -->
+                <div class="kontakt__info-col">
+                    <div class="kontakt__heading">
+                        <span class="kontakt__heading-line"></span>
+                        <h3 class="kontakt__heading-text">K O N T A K T &ensp; I N F O</h3>
+                    </div>
+                    <div class="kontakt__info-list">
+                        <!-- === FIRMENNAME: Ersetze durch deinen eigenen Firmennamen === -->
+                        <p class="kontakt__info-item kontakt__info-item--bold">Metallbau Pala</p>
+                        <!-- === INHABER: Ersetze durch den Inhabernamen === -->
+                        <p class="kontakt__info-item">Inh. Max Mustermann</p>
+                        <!-- === ADRESSE: Ersetze durch deine Adresse === -->
+                        <p class="kontakt__info-item">Musterstraße 1</p>
+                        <p class="kontakt__info-item">12345 Musterstadt</p>
+                        <!-- === E-MAIL: Ersetze durch deine eigene E-Mail === -->
+                        <p class="kontakt__info-item" style="margin-top: 1rem;">
+                            <a href="mailto:info@metallbau-pala.de"
+                                class="kontakt__email-link">info@metallbau-pala.de</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rechte Spalte: Telefon & Öffnungszeiten -->
+                <div class="kontakt__info-col">
+                    <div class="kontakt__heading">
+                        <span class="kontakt__heading-line"></span>
+                        <h3 class="kontakt__heading-text">J E T Z T &ensp; A N R U F E N</h3>
+                    </div>
+                    <!-- === TELEFON: Ersetze durch deine eigene Nummer === -->
+                    <a href="tel:+4912345678" class="kontakt__phone-number">+49 123 456 78</a>
+                    <!-- Öffnungszeiten -->
+                    <div class="kontakt__hours">
+                        <!-- === ÖFFNUNGSZEITEN: Passe die Zeiten an === -->
+                        <p class="kontakt__hours-item"><span class="kontakt__hours-day">Mo – Fr</span> <span
+                                class="kontakt__hours-time">07:00 – 17:00 Uhr</span></p>
+                        <p class="kontakt__hours-item"><span class="kontakt__hours-day">Sa</span> <span
+                                class="kontakt__hours-time">nach Vereinbarung</span></p>
+                        <p class="kontakt__hours-note">Termine nach Vereinbarung auch außerhalb der Öffnungszeiten
+                            möglich.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ── Untere Sektion: Kontaktformular ── -->
+            <div class="kontakt__form-wrapper">
+                <!--
+                ============================================================
+                    WEB3FORMS KONTAKTFORMULAR
+                    
+                    So richtest du es ein:
+                    1. Gehe zu https://web3forms.com/ und erstelle einen
+                       kostenlosen Account.
+                    2. Erstelle ein neues Formular und kopiere den Access Key.
+                    3. Ersetze "DEIN_WEB3FORMS_ACCESS_KEY_HIER" unten durch
+                       deinen Access Key.
+                    4. Fertig! Das Formular sendet dir E-Mails bei jeder
+                       neuen Nachricht.
+                ============================================================
+                -->
+                <form action="https://api.web3forms.com/submit" method="POST" class="kontakt__form" id="kontakt-form">
+
+                    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                         !!! WICHTIG: Ersetze den Wert unten durch deinen !!!
+                         !!! eigenen Web3Forms Access Key!                !!!
+                         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    <input type="hidden" name="access_key" value="DEIN_WEB3FORMS_ACCESS_KEY_HIER">
+
+                    <!-- Honeypot Spam-Schutz (nicht entfernen) -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1"
+                        autocomplete="off">
+
+                    <!-- Formular-Felder -->
+                    <div class="kontakt__form-grid">
+                        <div class="kontakt__form-group">
+                            <input type="text" name="name" id="form-name" class="kontakt__input" placeholder="Name">
+                        </div>
+                        <div class="kontakt__form-group">
+                            <input type="email" name="email" id="form-email" class="kontakt__input"
+                                placeholder="E-Mail *" required>
+                        </div>
+                        <div class="kontakt__form-group">
+                            <input type="tel" name="phone" id="form-phone" class="kontakt__input" placeholder="Telefon">
+                        </div>
+                    </div>
+                    <div class="kontakt__form-group">
+                        <textarea name="message" id="form-message" class="kontakt__input kontakt__textarea"
+                            placeholder="Ihre Nachricht" rows="6"></textarea>
+                    </div>
+                    <button type="submit" class="kontakt__submit-btn">KONTAKT AUFNEHMEN</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         GOOGLE MAPS
+         - Zeigt den Firmenstandort auf einer eingebetteten Karte
+         
+         === ADRESSE ÄNDERN ===
+         Ersetze im iframe-src den Text nach "q=" durch deine eigene
+         Adresse (Leerzeichen durch + ersetzen).
+         Beispiel: q=Musterstraße+1,+12345+Musterstadt
+    ================================================================= -->
+    <div class="maps" id="maps">
+        <iframe class="maps__iframe"
+            src="https://maps.google.com/maps?q=Piccoloministraße+28,+51063+Köln&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Standort Metallbau Pala">
+        </iframe>
+    </div>
+
+    <!-- ================================================================
+         FOOTER
+         - Copyright, Impressum & Datenschutz-Links
+    ================================================================= -->
+    <footer class="footer">
+        <div class="container footer__content">
+            <div class="footer__left">
+                <!-- === COPYRIGHT: Passe den Namen an === -->
+                <p class="footer__copyright">&copy; 2026 Metallbau Pala. Alle Rechte vorbehalten.</p>
+            </div>
+            <div class="footer__right">
+                <!-- === LINKS: Ersetze die href-Werte durch die URLs deiner Impressum- und Datenschutz-Seiten === -->
+                <a href="impressum.html" class="footer__link">Impressum</a>
+                <a href="datenschutz.html" class="footer__link">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================== JAVASCRIPT ======================== -->
+    <script src="script.js"></script>
+</body>
+
+</html>
