@@ -1,0 +1,902 @@
+/* ==================================================================
+   METALLBAU PALA – STYLESHEET
+   ------------------------------------------------------------------
+   Inhalt:
+     1. CSS Custom Properties (Farben, Schriften, Abstände)
+     2. Reset & Basis-Styles
+     3. Utility-Klassen
+     4. Header / Navigation
+     5. Hero Section
+     6. Sektions-Styles (allgemein)
+     7. Leistungen – Filter & Projekt-Grid
+     8. Unternehmen
+     9. Kontakt
+    10. Footer
+    11. Animationen
+    12. Responsive Breakpoints
+   ================================================================== */
+
+
+/* ==================================================================
+   1. CSS CUSTOM PROPERTIES
+   ------------------------------------------------------------------
+   Ändere hier die Farben und Schriftgrößen für das gesamte Design.
+   ================================================================== */
+:root {
+    /* ── Farben ── */
+    --clr-primary: #E87A20;
+    /* Orange-Akzent */
+    --clr-primary-dark: #c96510;
+    --clr-dark: #1a1d23;
+    /* Fast-Schwarz / Anthrazit */
+    --clr-dark-2: #2a2d35;
+    /* Dunkelgrau */
+    --clr-dark-3: #3a3d45;
+    /* Mittelgrau */
+    --clr-gray: #6b7280;
+    /* Textgrau */
+    --clr-light: #f3f4f6;
+    /* Helles Grau / Hintergrund */
+    --clr-white: #ffffff;
+
+    /* ── Schrift ── */
+    --font-main: 'Inter', sans-serif;
+
+    /* ── Abstände ── */
+    --section-padding: 6rem 0;
+    --container-width: 1200px;
+
+    /* ── Übergänge ── */
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ── Header-Höhe (für Scroll-Offset) ── */
+    --header-height: 100px;
+}
+
+
+/* ==================================================================
+   2. RESET & BASIS-STYLES
+   ================================================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Offset für fixe Navigation */
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--clr-dark);
+    background-color: var(--clr-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ==================================================================
+   3. UTILITY-KLASSEN
+   ================================================================== */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.accent {
+    color: var(--clr-primary);
+}
+
+/* Primär-Button */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn--primary {
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+}
+
+.btn--primary:hover {
+    background-color: var(--clr-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(232, 122, 32, 0.35);
+}
+
+
+/* ==================================================================
+   4. HEADER / NAVIGATION
+   ------------------------------------------------------------------
+   - Fixiert am oberen Rand
+   - Wird durch JS bei Scroll dunkler (.header--scrolled)
+   ================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+/* Scrolled State – dark background (toggled via JS) */
+.header--scrolled {
+    background-color: rgba(26, 29, 35, 0.97);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* ── Logo ── */
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav__logo-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--clr-white);
+}
+
+/* Falls ein Bild-Logo verwendet wird */
+.nav__logo-img {
+    height: 55px;
+    width: auto;
+    /* Logo weiß machen (Original ist schwarz auf transparent) */
+    filter: brightness(0) invert(1);
+}
+
+/* ── Menü ── */
+.nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav__link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    transition: color var(--transition);
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--clr-primary);
+    transition: width var(--transition);
+}
+
+.nav__link:hover {
+    color: var(--clr-white);
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+/* ── Hamburger-Button (nur auf Mobile sichtbar) ── */
+.nav__toggle {
+    display: none;
+    /* versteckt auf Desktop */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.nav__toggle-bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--clr-white);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* Hamburger → X Animation */
+.nav__toggle--active .nav__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav__toggle--active .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav__toggle--active .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==================================================================
+   5. HERO SECTION
+   ------------------------------------------------------------------
+   === HERO-HINTERGRUNDBILD ===
+   Ersetze die URL unten durch dein eigenes Bild.
+   ================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* === HERO-BILD: Ersetze diese URL durch dein eigenes Hintergrundbild === */
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    /* Fallback-Farbe, falls kein Bild geladen wird */
+    background-color: var(--clr-dark);
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(26, 29, 35, 0.85) 0%,
+            rgba(26, 29, 35, 0.6) 50%,
+            rgba(232, 122, 32, 0.15) 100%);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--clr-white);
+}
+
+.hero__title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+}
+
+.hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 550px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+
+/* ==================================================================
+   6. SEKTIONS-STYLES (allgemein)
+   ================================================================== */
+.section {
+    padding: var(--section-padding);
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section__title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--clr-dark);
+    margin-bottom: 1rem;
+}
+
+.section__title--left {
+    text-align: left;
+}
+
+.section__title--light {
+    color: var(--clr-white);
+}
+
+.section__description {
+    font-size: 1.05rem;
+    color: var(--clr-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* ==================================================================
+   7. LEISTUNGEN – FILTER & PROJEKT-GRID
+   ================================================================== */
+
+/* ── Filter-Buttons ── */
+.filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+}
+
+.filter__btn {
+    padding: 0.6rem 1.4rem;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-gray);
+    background: transparent;
+    border: 2px solid var(--clr-light);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter__btn:hover {
+    color: var(--clr-primary);
+    border-color: var(--clr-primary);
+}
+
+.filter__btn--active {
+    color: var(--clr-white);
+    background-color: var(--clr-primary);
+    border-color: var(--clr-primary);
+}
+
+/* ── Projekt-Grid (4 Spalten Desktop, 2 Tablet, 1 Smartphone) ── */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+/* ── Einzelne Projekt-Karte ── */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    /* Für den Filter: Standard-Übergang */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Versteckte Karten (wenn Filter aktiv) */
+.project-card--hidden {
+    display: none;
+}
+
+.project-card__img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* ── Hover-Overlay ── */
+.project-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 29, 35, 0.7);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.project-card__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--clr-white);
+    transform: translateY(15px);
+    transition: transform var(--transition);
+}
+
+.project-card__subtitle {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--clr-primary);
+    margin-top: 0.4rem;
+    transform: translateY(15px);
+    transition: transform var(--transition) 0.05s;
+}
+
+/* Hover-Effekt: Overlay einblenden, Bild leicht zoomen */
+.project-card:hover .project-card__overlay {
+    opacity: 1;
+}
+
+.project-card:hover .project-card__title,
+.project-card:hover .project-card__subtitle {
+    transform: translateY(0);
+}
+
+.project-card:hover .project-card__img {
+    transform: scale(1.08);
+    filter: brightness(0.7);
+}
+
+
+/* ==================================================================
+   8. UNTERNEHMEN
+   ================================================================== */
+.unternehmen {
+    background-color: var(--clr-light);
+}
+
+.unternehmen__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.unternehmen__description {
+    font-size: 1.05rem;
+    color: var(--clr-gray);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+/* ── Kennzahlen ── */
+.unternehmen__stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat__number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--clr-primary);
+    line-height: 1;
+}
+
+.stat__label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--clr-gray);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+}
+
+/* ── Unternehmensbild ── */
+.unternehmen__img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==================================================================
+   9. KONTAKT (Info-Spalten + Formular)
+   ================================================================== */
+.kontakt {
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+}
+
+/* ── Obere Sektion: Zwei-Spalten-Grid ── */
+.kontakt__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* ── Spalten-Überschrift mit blauem Strich ── */
+.kontakt__heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.kontakt__heading-line {
+    display: block;
+    width: 35px;
+    height: 3px;
+    background-color: var(--clr-primary);
+    flex-shrink: 0;
+}
+
+.kontakt__heading-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+/* ── Kontakt-Info-Liste ── */
+.kontakt__info-list {
+    padding-left: 0;
+}
+
+.kontakt__info-item {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+}
+
+.kontakt__info-item--bold {
+    font-weight: 700;
+    color: var(--clr-white);
+    font-size: 1.05rem;
+}
+
+.kontakt__email-link {
+    color: var(--clr-primary);
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.kontakt__email-link:hover {
+    color: var(--clr-primary-dark);
+}
+
+/* ── Telefonnummer (groß & orange) ── */
+.kontakt__phone-number {
+    display: block;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    color: var(--clr-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    transition: color var(--transition);
+}
+
+.kontakt__phone-number:hover {
+    color: var(--clr-primary-dark);
+}
+
+/* ── Öffnungszeiten ── */
+.kontakt__hours {
+    margin-top: 0.5rem;
+}
+
+.kontakt__hours-item {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 2;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.kontakt__hours-day {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    min-width: 60px;
+}
+
+.kontakt__hours-time {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.kontakt__hours-note {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ── Untere Sektion: Kontaktformular ── */
+.kontakt__form-wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 3rem;
+}
+
+.kontakt__form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.kontakt__form-group {
+    width: 100%;
+}
+
+.kontakt__input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    color: var(--clr-white);
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0;
+    outline: none;
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.kontakt__input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+}
+
+.kontakt__input:focus {
+    border-color: var(--clr-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.kontakt__textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.kontakt__submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clr-white);
+    background-color: var(--clr-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.kontakt__submit-btn:hover {
+    background-color: var(--clr-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(232, 122, 32, 0.35);
+}
+
+
+/* ==================================================================
+   9b. GOOGLE MAPS
+   ================================================================== */
+.maps {
+    width: 100%;
+    line-height: 0;  /* entfernt Abstand unter dem iframe */
+}
+
+.maps__iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    filter: grayscale(40%);
+    transition: filter var(--transition);
+}
+
+.maps__iframe:hover {
+    filter: grayscale(0%);
+}
+
+
+/* ==================================================================
+   10. FOOTER
+   ================================================================== */
+.footer {
+    background-color: var(--clr-dark-2);
+    padding: 1.8rem 0;
+}
+
+.footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer__copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__right {
+    display: flex;
+    gap: 1.8rem;
+}
+
+.footer__link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color var(--transition);
+}
+
+.footer__link:hover {
+    color: var(--clr-primary);
+}
+
+
+/* ==================================================================
+   11. ANIMATIONEN (Scroll-Reveal)
+   ================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==================================================================
+   12. RESPONSIVE BREAKPOINTS
+   ================================================================== */
+
+/* ── Tablet (< 1024px) ── */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .unternehmen__grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .unternehmen__image {
+        order: -1;
+    }
+
+    .section__title--left {
+        text-align: center;
+    }
+
+    .unternehmen__text {
+        text-align: center;
+    }
+
+    .unternehmen__stats {
+        justify-content: center;
+    }
+}
+
+/* ── Mobile (< 768px) ── */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 4rem 0;
+        --header-height: 70px;
+    }
+
+    /* Mobile Menu */
+    .nav__toggle {
+        display: flex;
+    }
+
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: var(--clr-dark);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: right var(--transition);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav__menu--open {
+        right: 0;
+    }
+
+    .nav__link {
+        font-size: 1rem;
+    }
+
+    /* Hero */
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    /* Filter */
+    .filter {
+        gap: 0.5rem;
+    }
+
+    .filter__btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    /* Kontakt */
+    .kontakt__info-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .kontakt__form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer__content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ── Smartphone (< 480px) ── */
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card__img {
+        height: 220px;
+    }
+
+    .unternehmen__stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .stat {
+        align-items: center;
+    }
+}
